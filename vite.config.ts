@@ -3,6 +3,9 @@ import react from "@vitejs/plugin-react";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-	plugins: [react()],
-	base: "/online-led/",
+  plugins: [react()],
+  base: "/",
+  server: {
+    host: true,
+  },
 });
