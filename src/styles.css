@@ -6,21 +6,21 @@
 }
 
 :root {
-	line-height: 1.5;
-	font-weight: 400;
-	font-synthesis: none;
-	text-rendering: optimizeLegibility;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-	margin: 0;
-	display: block;
-	height: 100%;
+  margin: 0;
+  display: block;
+  height: 100%;
 }
 
 #root {
-	width: 100%;
-	height: 100%;
+  width: 100%;
+  height: 100%;
 }
