@@ -6,14 +6,15 @@ function App() {
   const ledsStatus = [...Array(256).keys()];
 
   return (
-    <article className="h-full bg-amber-50">
+    <article className="flex h-full flex-col items-center bg-amber-50">
       <Header />
       <main
         className={clsx(
-          "mx-2 flex flex-wrap justify-evenly py-4",
-          "gap-4",
-          "sm:gap-6",
-          "md:gap-8",
+          "grid w-max py-6",
+          "grid-cols-2 min-[400px]:grid-cols-3 min-[544px]:grid-cols-4 min-[912px]:grid-cols-5",
+          "gap-8",
+          "sm:gap-12",
+          "md:gap-16",
         )}
       >
         {ledsStatus.map((status, id) => (

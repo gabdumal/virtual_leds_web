@@ -8,14 +8,12 @@ interface LedProps {
 function Led({ id, isLit }: LedProps) {
   const litStyle = isLit ? "bg-amber-300" : "bg-blue-100";
   const status = isLit ? "Lit" : "Off";
-  const zebraStyle = id % 2 === 0 ? "bg-neutral-50" : "bg-blue-50";
   const paddingZeros = id < 100 ? `${id < 10 ? "0" : ""}0` : "";
 
   return (
     <section
       className={clsx(
-        zebraStyle,
-        "mb-1 mr-1 flex size-[6.5rem] border-spacing-2 flex-col items-center justify-center",
+        "mb-1 mr-1 flex size-[6.5rem] border-spacing-2 flex-col items-center justify-center bg-neutral-50",
         "rounded-lg border-4 border-amber-950 p-2 drop-shadow-[0.25rem_0.25rem_0rem_#451a03]",
       )}
       aria-label="LED"
