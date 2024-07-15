@@ -1,9 +1,34 @@
+import useWebSocket from "react-use-websocket";
 import { clsx } from "clsx/lite";
 import Header from "./Header";
 import Led from "./Led";
+import { useEffect, useState } from "react";
+
+type Status = 0 | 1;
+
+/// Constants
+const serverPort = "8100";
+const serverAddress = "192.168.15.144";
+const serverUrl = `ws://${serverAddress}:${serverPort}`;
 
 function App() {
-  const ledsStatus = [...Array(256).keys()];
+  const [ledsStatus, setLedsStatus] = useState<Array<Status>>([]);
+
+  const { lastJsonMessage }: { lastJsonMessage: Array<Status> } = useWebSocket(
+    serverUrl,
+    {
+      onOpen: () => {
+        console.log("Connection established.");
+      },
+      shouldReconnect: () => true,
+    },
+  );
+
+  useEffect(() => {
+    if (lastJsonMessage !== null) {
+      setLedsStatus(lastJsonMessage);
+    }
+  }, [lastJsonMessage]);
 
   return (
     <article className="flex h-full flex-col items-center bg-amber-50">
@@ -18,7 +43,7 @@ function App() {
         )}
       >
         {ledsStatus.map((status, id) => (
-          <Led id={id} isLit={status !== 0} key={id} />
+          <Led id={id} isLit={Boolean(status)} key={id} />
         ))}
       </main>
     </article>
