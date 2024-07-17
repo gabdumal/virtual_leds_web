@@ -9,9 +9,7 @@ const config = {
   useTabs: false,
   tailwindFunctions: ["clsx"],
   tailwindConfig: "tailwind.config.ts",
-  plugins: [
-      "prettier-plugin-tailwindcss",
-  ],
+  plugins: ["prettier-plugin-tailwindcss"],
   experimentalTernaries: true,
 };
 

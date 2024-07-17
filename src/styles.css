@@ -3,6 +3,23 @@
 @tailwind utilities;
 
 @layer base {
+  *,
+  ::before,
+  ::after {
+    @apply divide-dark border-dark text-dark shadow-dark;
+  }
+
+  html {
+    @apply h-full bg-background font-common text-base;
+  }
+
+  body {
+    @apply h-full;
+  }
+
+  article {
+    @apply h-full;
+  }
 }
 
 :root {
@@ -14,12 +31,8 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-  margin: 0;
-  display: block;
-}
-
 #root {
   width: 100%;
-  height: 100%;
+  display: flex;
+  flex-grow: 1;
 }
