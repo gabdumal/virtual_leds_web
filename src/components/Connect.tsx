@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import Input from "./Input";
 import Button from "./Button";
+import Alert from "./Alert";
 
 interface ConnectProps {
   setServerUrl: (serverUrl: string) => void;
@@ -8,7 +9,7 @@ interface ConnectProps {
 
 export default function Connect({ setServerUrl }: ConnectProps) {
   const [alertIsVisible, setAlertIsVisible] = useState<boolean>(false);
-  const [address, setAddress] = useState<string>("192.168.0.15");
+  const [address, setAddress] = useState<string>("192.168.15.144");
   const [port, setPort] = useState<string>("8100");
 
   const setUpConnection = () => {
@@ -19,16 +20,17 @@ export default function Connect({ setServerUrl }: ConnectProps) {
     const isValid = pattern.test(serverUrl);
     if (isValid) {
       console.log("Valid!");
-      tryConnection(serverUrl);
+      handleConnect(serverUrl);
     } else {
       console.log("Invalid!");
     }
     setAlertIsVisible(!isValid);
   };
 
-  function tryConnection(serverUrl: string) {
-    console.log("Connecting...");
-  }
+  const handleConnect = useCallback(
+    (serverUrl: string) => setServerUrl(serverUrl),
+    [],
+  );
 
   return (
     <section className="flex flex-col gap-4">
@@ -43,11 +45,7 @@ export default function Connect({ setServerUrl }: ConnectProps) {
       />
       <Input name="port" label="Port" value={port} setValue={setPort} />
       <Button text="Connect" handlePressed={setUpConnection} />
-      {alertIsVisible && (
-        <div className="rounded-full border-2 bg-danger-light px-2 font-semibold shadow-inner-2">
-          <p className="text-center text-lg text-light">This URL is invalid!</p>
-        </div>
-      )}
+      {alertIsVisible && <Alert intent="danger" text="This URL is invalid!" />}
     </section>
   );
 }

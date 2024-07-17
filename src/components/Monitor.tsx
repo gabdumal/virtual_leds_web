@@ -3,16 +3,14 @@ import Header from "./Header";
 import { useState, useEffect } from "react";
 import useWebSocket from "react-use-websocket";
 import Led from "./Led";
-
+import { type Status } from "./App";
 
 interface MonitorProps {
-  serverUrl: string;
+  lastJsonMessage: Array<Status>;
 }
 
-export default function Monitor({ serverUrl }: MonitorProps) {
+export default function Monitor({ lastJsonMessage }: MonitorProps) {
   const [ledsStatus, setLedsStatus] = useState<Array<Status>>([]);
-
-
 
   useEffect(() => {
     if (lastJsonMessage !== null) {
