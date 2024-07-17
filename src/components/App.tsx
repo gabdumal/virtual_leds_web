@@ -1,13 +1,11 @@
 import { clsx } from "clsx/lite";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Monitor from "./Monitor";
 import Connect from "./Connect";
 import Header from "./Header";
+import useWebSocket from "react-use-websocket";
 
-// /// Constants
-// const serverPort = "8100";
-// const serverAddress = "192.168.15.144";
-// const serverUrl = `ws://${serverAddress}:${serverPort}`;
+export type Status = 0 | 1;
 
 function App() {
   const [serverUrl, setServerUrl] = useState<string | null>(null);

@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import useWebSocket from "react-use-websocket";
 import Led from "./Led";
 
-type Status = 0 | 1;
 
 interface MonitorProps {
   serverUrl: string;
@@ -13,15 +12,7 @@ interface MonitorProps {
 export default function Monitor({ serverUrl }: MonitorProps) {
   const [ledsStatus, setLedsStatus] = useState<Array<Status>>([]);
 
-  const { lastJsonMessage }: { lastJsonMessage: Array<Status> } = useWebSocket(
-    serverUrl,
-    {
-      onOpen: () => {
-        console.log("Connection established.");
-      },
-      shouldReconnect: () => true,
-    },
-  );
+
 
   useEffect(() => {
     if (lastJsonMessage !== null) {
