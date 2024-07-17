@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "author": "Gabriel Malosto",
   "type": "module",
+  "base": "virtual_leds_web",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
